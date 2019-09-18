@@ -90,25 +90,47 @@ router.post("/login", passport.authenticate("local", {
 
 router.post('/logout', (req, res, next) => {
 
-    req.session.destroy();
+
+    req.logout();
+    // passport has its own req.logout method for you because req.session.destroy() just wasn't easy enough
 
     res.redirect('/');
 
+
+
+    // req.session.destroy();
+
+    // res.redirect('/');
+
 })
 
 
-router.get('/secret', (req, res, next) => {
 
-    if (req.session.currentUser) {
-        res.render('users/secret', { theUser: req.session.currentUser })
-    }
-    else {
+
+
+
+
+router.get('/secret', (req, res, next)=>{
+
+    if(req.session.currentuser){
+        res.render('users/secret', {theUser: req.session.currentuser})
+    } else{
         res.redirect('/')
     }
-
-
-
 })
+
+
+
+// router.get('/secret', (req, res, next) => {
+
+//     if (req.session.currentUser) {
+//         res.render('users/secret', { theUser: req.session.currentUser })
+//     }
+//     else {
+//         res.redirect('/')
+//     }
+
+// })
 
 
 module.exports = router;
