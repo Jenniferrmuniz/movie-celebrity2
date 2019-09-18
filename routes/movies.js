@@ -150,8 +150,12 @@ router.get('/:id/edit', (req, res, next) => {
       Celeb.find()
         .then((allCelebs) => {
 
-          console.log(allCelebs);
-          res.render('movies/editMovie', { movie: theMovie, celebs: allCelebs });
+          allCelebs.forEach((eachCeleb)=>{
+            if(eachCeleb._id.equals(theMovie.stars)){
+              eachCeleb.chosen = true;
+            }
+          })
+            res.render('movies/editMovie', { movie: theMovie, celebs: allCelebs });
         })
         .catch((err) => {
           next(err);

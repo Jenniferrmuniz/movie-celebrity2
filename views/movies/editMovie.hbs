@@ -13,9 +13,21 @@
   
   <p>Stars: </p>
   <select name='theStars'>
+    
     {{#each celebs}}
+
+    {{#if chosen}}
+
+    <option selected value='{{this._id}}'>{{this.name}}</option>
+
+    {{else}}
     <option value='{{this._id}}'>{{this.name}}</option>
+
+    {{/if}}
+
     {{/each}}
+
+   
   </select>
 
   <button type='submit'>Save</button>
