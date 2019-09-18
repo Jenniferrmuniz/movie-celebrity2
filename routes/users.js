@@ -45,7 +45,7 @@ router.get('/login', (req, res, next) => {
 
 router.post("/login", passport.authenticate("local", {
     successRedirect: "/",
-    failureRedirect: "/login",
+    failureRedirect: "/users/login",
     failureFlash: true,
     passReqToCallback: true
 }));
@@ -112,8 +112,8 @@ router.post('/logout', (req, res, next) => {
 
 router.get('/secret', (req, res, next)=>{
 
-    if(req.session.currentuser){
-        res.render('users/secret', {theUser: req.session.currentuser})
+    if(req.user){
+        res.render('users/secret', {theUser: req.user})
     } else{
         res.redirect('/')
     }

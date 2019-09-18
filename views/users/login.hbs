@@ -1,7 +1,30 @@
 <h1>Login</h1>
 
 
+
+
 <form action="/users/login" method="POST">
+
+
+<p>Username</p>
+<input type="text" name="username">
+{{!-- with passport, you are not allowed to name the inputs whatever you want --}}
+{{!-- this one has to be name="username" --}}
+
+
+<p>Password</p>
+<input type="password" name="password">
+{{!-- this one has to be name="password" --}}
+
+
+<button>Submit</button>
+</form>
+
+
+
+
+
+{{!-- <form action="/users/login" method="POST">
 
     <p>Username</p>
     <input type="text" name="theUsername">
@@ -11,4 +34,4 @@
 
 
     <button>Submit</button>
-</form>
+</form> --}}

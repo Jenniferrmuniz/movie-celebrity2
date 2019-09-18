@@ -131,7 +131,7 @@ passport.use(new LocalStrategy((username, password, next) => {
 
 
 app.use((req, res, next)=>{
-  res.locals.theUser = req.session.currentUser;
+  res.locals.theUser = req.user;
   res.locals.errorMessage = req.flash('error');
   next();
 })

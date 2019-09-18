@@ -8,10 +8,10 @@ const Celeb = require('../models/celebrity');
 router.get('/', (req, res, next) => {
 
 
-  if (!req.user) {
-    req.flash('error', "please login to view movies")
-    res.redirect('/users/login');
-  }
+  // if (!req.user) {
+  //   req.flash('error', "please login to view movies")
+  //   res.redirect('/users/login');
+  // }
 
   // if(req.session.counter){
   //     req.session.counter++;
@@ -25,10 +25,12 @@ router.get('/', (req, res, next) => {
 
 
       allTheMovies.forEach((eachMovie) => {
-
-        if (eachMovie.creator.equals(req.user._id)) {
-          eachMovie.mine = true;
+        if(req.user){
+          if (eachMovie.creator.equals(req.user._id)) {
+            eachMovie.mine = true;
+          }
         }
+
       })
 
 
@@ -65,7 +67,7 @@ router.get('/new', (req, res, next) => {
   Celeb.find()
     .then((result) => {
 
-      res.render('book-views/new-book', { allCelebs: result });
+      res.render('movies/newMovie', { allCelebs: result });
     })
     .catch((err) => {
       next(err)
