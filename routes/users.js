@@ -4,6 +4,7 @@ const User = require('../models/user');
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const bcrypt = require('bcryptjs');
+const passport = require('passport');
 
 
 
@@ -39,37 +40,50 @@ router.get('/login', (req, res, next) => {
 })
 
 
-router.post('/login', (req, res, next) => {
-
-    const username = req.body.theUsername;
-    const password = req.body.thePassword;
-
-    User.findOne({ username: username })
-        .then((userFromDB) => {
-
-            if (!userFromDB) {
 
 
-                req.flash('error', 'sorry this username does not exist');
 
-                res.redirect('/users/login');
-            }
+router.post("/login", passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/login",
+    failureFlash: true,
+    passReqToCallback: true
+}));
 
-            if (bcrypt.compareSync(password, userFromDB.password)) {
-                // Save the login in the session!
-                req.session.currentUser = userFromDB;
-                // this is the magic ^ line of code that actually logs you in
-                res.redirect("/");
-            }
-            else {
-                req.flash('error', 'incorrect password');
-                res.redirect('/users/login')
-            }
-        })
-        .catch((err) => {
-            next(err);
-        })
-})
+
+
+
+// router.post('/login', (req, res, next) => {
+
+//     const username = req.body.theUsername;
+//     const password = req.body.thePassword;
+
+//     User.findOne({ username: username })
+//         .then((userFromDB) => {
+
+//             if (!userFromDB) {
+
+
+//                 req.flash('error', 'sorry this username does not exist');
+
+//                 res.redirect('/users/login');
+//             }
+
+//             if (bcrypt.compareSync(password, userFromDB.password)) {
+//                 // Save the login in the session!
+//                 req.session.currentUser = userFromDB;
+//                 // this is the magic ^ line of code that actually logs you in
+//                 res.redirect("/");
+//             }
+//             else {
+//                 req.flash('error', 'incorrect password');
+//                 res.redirect('/users/login')
+//             }
+//         })
+//         .catch((err) => {
+//             next(err);
+//         })
+// })
 
 
 

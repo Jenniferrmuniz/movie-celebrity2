@@ -55,22 +55,80 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 
 // default value for title local
-app.locals.title = 'Express - Generated with IronGenerator';
+app.locals.title = 'App';
 
 
 
 
 app.use(session({
-  secret: "basic-auth-secret",
-  cookie: { maxAge: 60000 },
-  store: new MongoStore({
-    mongooseConnection: mongoose.connection,
-    ttl: 24 * 60 * 60 // 1 day
-  })
+  secret: "our-passport-local-strategy-app",
+  resave: true,
+  saveUninitialized: true
 }));
 
 
+
+app.use(passport.initialize());
+// this line is basically turning passport on
+
+app.use(passport.session());
+// this line connects the passport instance you just created, with the session that you just created above it
+
+
+
+
 app.use((flash()));
+
+
+
+
+
+passport.serializeUser((user, cb) => {
+  cb(null, user._id);
+});
+
+passport.deserializeUser((id, cb) => {
+  User.findById(id, (err, user) => {
+    if (err) { return cb(err); }
+    cb(null, user);
+  });
+});
+
+passport.use(new LocalStrategy((username, password, next) => {
+  //                                ^
+  //                                |
+  //                                ------------------------------------
+  //                                                                    |
+  // passport by default will grab req.body.username and put it right here
+// same thing is true for password
+
+  User.findOne({ username }, (err, user) => {
+    // in this callbacksyntax err will only exist if something goes wrong
+    // user will only exist if everything goes right
+    if (err) {
+      return next(err);
+    }
+    if (!user) {
+      return next(null, false, { message: "Sorry, wrong username" });
+      // whatever message is equal to automatically gets set to req.flash('error')
+    }
+    if (!bcrypt.compareSync(password, user.password)) {
+      return next(null, false, { message: "Incorrect password" });
+    }
+
+    return next(null, user);
+  });
+}));
+
+
+
+
+
+
+
+
+
+
 
 app.use((req, res, next)=>{
   res.locals.theUser = req.session.currentUser;
