@@ -107,7 +107,7 @@ body {
   margin: 100px; 
   display:flex;
   flex-direction: column;
-  background-color: lightpink;
+  background-color: lightblue;
 }
 
 
@@ -144,3 +144,22 @@ body {
 }
 
 
+
+
+.all-celebs{
+  margin: 50px;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+
+.celebs-div{
+  width: 300px;
+  margin: 50px;
+  background-color: lightgreen;
+  padding: 15px;
+  border-radius: 5px;
+  text-decoration: none;
+}

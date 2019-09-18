@@ -1,20 +1,37 @@
+<h2>Celebrities</h2>
 
-  <h2>Celebrities</h2>
+
+
+<div class='all-celebs'>
+
 
 
   {{#each allCelebs}}
-    <a href='/celebrities/{{this._id}}'> <p>{{this.name}}</p> </a>
+  <div class='celebs-div'>
+    <a href='/celebrities/{{this._id}}'>
+      <p>{{this.name}}</p>
+    </a>
     <a href='/celebrities/{{this._id}}/edit'>Edit</a>
 
     {{!-- <form action='/celebrities/{{this._id}}/edit' method='GET'>
       <button>Edit</button>
     </form> --}}
-    
+
     <form action='/celebrities/{{this._id}}/delete' method='POST'>
       <button>Delete</button>
     </form>
+  </div>
+
   {{/each}}
 
-<br> 
 
-  <a href='/celebrities/new'>Create new Celeb!</a> 
+
+
+</div>
+
+
+
+<br>
+<div class='new-link'>
+<a href='/celebrities/new'>Create new Celeb!</a>
+</div>
