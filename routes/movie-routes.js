@@ -8,18 +8,6 @@ const Celeb = require('../models/celebrity');
 router.get('/', (req, res, next) => {
 
 
-  // if (!req.user) {
-  //   req.flash('error', "please login to view movies")
-  //   res.redirect('/users/login');
-  // }
-
-  // if(req.session.counter){
-  //     req.session.counter++;
-  // }else{
-  //     req.session.counter = 1;
-  // }
-  // this is a useless example of how oyu can edit the session whenever/however you want
-
   Movie.find()
     .then((allTheMovies) => {
 
@@ -107,6 +95,8 @@ router.get('/:id', (req, res, next) => {
 
   Movie.findById(id).populate('stars')
     .then((movieData) => {
+
+      console.log('+++++----- ', movieData.stars);
       res.render('movies/details', { movie: movieData });
     })
     .catch((err) => {
