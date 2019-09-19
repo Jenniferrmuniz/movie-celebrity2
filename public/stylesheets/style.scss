@@ -13,35 +13,41 @@ body {
   color: black;
 }
 
-.login-page{
-  margin: 50px;
-  display:flex;
-}
 
-.login-form{
+
+
+
+
+
+//home page
+
+#main-page-all{
+  width:100%;
+  height:100%;
+  padding: 50px;
   display:flex;
   flex-direction: column;
-  margin: 50px;
+  align-items: center;
+  justify-content: center;
+  
 }
 
-.login-form div{
+.secret-profile{
+  margin: 10px;
+  padding: 10px;
+  color: white;
+  background: lightblue;
+  border-radius: 5px;
+  width: 90vw;
+  height: 100px;
   display:flex;
-  flex-direction: row;
-  margin: 20px;
+  justify-content: center;
+  align-items: center;
 }
 
-
-
-
-#logout-btn button{
-  background: none!important;
-  border: none;
-  padding: 0!important;
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
+.secret-profile img{
+  width: 100px;
 }
-
 
 .main-page{
   width: 100%;
@@ -65,40 +71,23 @@ body {
   align-items: center;
 }
 
-
 .main-page img{
   width: 100px;
 }
 
 
-.loggedin-main-page{
-  width:100%;
-  height:100%;
-  padding: 50px;
-  display:flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  
-}
 
-#secret-profile{
-  margin: 20px;
-  padding: 30px;
-  color: white;
-  background: lightblue;
-  border-radius: 5px;
-  width:250px;
-  height: 250px;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-}
 
-#secret-profile img{
-  width: 100px;
-}
 
+
+
+
+
+//all movies page
+
+#all-movies-page h2{
+  margin: 50px;
+}
 
 .all-movies{
   margin: 50px;
@@ -117,11 +106,22 @@ body {
   text-decoration: none;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+//new movie page
+
 .new-movie-page{
   margin: 30px;
 }
-
-
 
 .new-movie-form{
   margin: 100px; 
@@ -130,6 +130,9 @@ body {
   background-color: lightblue;
 }
 
+.new-movie-form p{
+  margin: 15px;
+}
 
 .new-movie-form div{
   margin: 20px;
@@ -137,33 +140,20 @@ body {
   flex-direction: row;
 }
 
-.form-save{
-  align-self: flex-end;
+
+
+
+
+
+
+
+
+
+//all celebs page
+
+#all-celebs-page h2{
+  margin: 50px;
 }
-
-.form-save button{
-  margin-right: 100px; 
-}
-
-
-.new-movie-form p{
-  margin: 15px;
-}
-
-
-.new-link{
-  text-align: center;
-  padding: 15px;
-}
-
-.new-link a{
-  padding: 15px;
-  background-color: lightslategray;
-  color: white;
-  text-decoration: none;
-}
-
-
 
 
 .all-celebs{
@@ -178,11 +168,21 @@ body {
 .celebs-div{
   width: 300px;
   margin: 50px;
-  background-color: lightgreen;
+  background-color: lightblue;
   padding: 15px;
   border-radius: 5px;
   text-decoration: none;
 }
+
+
+
+
+
+
+
+
+
+//new celeb page
 
 .new-celeb-page{
   margin: 30px;
@@ -193,7 +193,7 @@ body {
   margin: 100px; 
   display:flex;
   flex-direction: column;
-  background-color: lightgreen;
+  background-color: lightblue;
 }
 
 .new-celeb-form div{
@@ -205,4 +205,182 @@ body {
 
 .new-celeb-form p{
   margin: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+//used for both both celebs and movies
+
+.new-link{
+  text-align: center;
+  padding: 15px;
+}
+
+.new-link a{
+  padding: 15px;
+  background-color: lightslategray;
+  color: white;
+  text-decoration: none;
+}
+
+.form-save{
+  align-self: flex-end;
+}
+
+.form-save button{
+  margin-right: 100px; 
+}
+
+
+
+
+
+
+
+
+
+
+//log in page
+
+.login-page{
+  margin: 50px;
+}
+
+.login-form{
+  background-color:lightslategray;
+  padding: 40px;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: 80px 250px;
+}
+
+.login-form div{
+  display:flex;
+  flex-direction: row;
+  margin: 15px;
+}
+
+
+.login-form button{
+  margin: 30px;
+  width: 50%;
+}
+
+
+
+
+
+
+
+//sign up page
+
+#signup-page{
+  margin: 50px;
+}
+
+
+.signup-form{
+  background-color:lightslategray;
+  padding: 40px;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: 80px 250px;
+}
+
+.signup-form div{
+  display:flex;
+  flex-direction: row;
+  margin: 15px;
+}
+
+.signup-form button{
+  margin: 30px;
+  width: 50%;
+}
+
+
+
+
+
+
+
+
+//create new account page
+
+#new-account-page{
+  margin: 50px;
+}
+
+.new-account-form{
+  background-color:lightslategray;
+  padding: 40px;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: 80px 250px;
+}
+
+.new-account-form div{
+  display:flex;
+  flex-direction: row;
+  margin: 15px;
+}
+
+.new-account-form button{
+  margin: 30px;
+  width: 50%;
+}
+
+
+
+
+
+
+
+
+//active users page
+
+#active-users-page{
+  margin: 40px;
+}
+
+.all-active-users{
+  display:flex;
+  flex-direction: column;
+}
+
+.all-active-users div{
+  display: flex;
+  flex-direction: row;
+}
+
+
+
+
+
+
+
+//log out button
+
+#logout-btn button{
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }

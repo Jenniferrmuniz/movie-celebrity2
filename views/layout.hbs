@@ -41,11 +41,11 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="/celebrities/">All celebrities</a>
+            {{#if theUser.isAdmin}}
             <a class="dropdown-item" href="/celebrities/new">Create new celebrity</a>
+            {{/if}}
           </div>
         </li>
-
-
 
 
 

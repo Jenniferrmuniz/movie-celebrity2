@@ -1,21 +1,24 @@
 
 
 
-<div class='loggedin-main-page'>
+<div id='main-page-all'>
 
 
 {{#if theUser}}
+<div class='show-main'>
 
-<a id='secret-profile' href='/users/profile'>
+<a class='secret-profile' href='/users/profile'>
     <img src='/images/profile-icon.png'>
     <p>Profile</p>
 </a>
 
 
-<a id='secret-profile' href='/users/secret'>
+<a class='secret-profile' href='/users/secret'>
     <img src='/images/profile-icon.png'>
     <p>Secret</p>
 </a>
+
+</div>
 {{/if}}
 
 <div class='main-page'>
