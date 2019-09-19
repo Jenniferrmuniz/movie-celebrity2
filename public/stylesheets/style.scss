@@ -352,6 +352,8 @@ body {
 
 
 
+
+
 //active users page
 
 #active-users-page{
@@ -359,13 +361,18 @@ body {
 }
 
 .all-active-users{
+  background-color: lightslategray;
+  margin: 50px;
+  padding: 15px;
   display:flex;
   flex-direction: column;
+
 }
 
 .all-active-users div{
   display: flex;
   flex-direction: row;
+  margin: 15px;
 }
 
 

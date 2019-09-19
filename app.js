@@ -1,22 +1,23 @@
 require('dotenv').config();
 
-const bodyParser   = require('body-parser');
-const cookieParser = require('cookie-parser');
-const express      = require('express');
-const favicon      = require('serve-favicon');
-const hbs          = require('hbs');
-const mongoose     = require('mongoose');
-const logger       = require('morgan');
-const path         = require('path');
+const bodyParser    = require('body-parser');
+const cookieParser  = require('cookie-parser');
+const express       = require('express');
+const favicon       = require('serve-favicon');
+const hbs           = require('hbs');
+const mongoose      = require('mongoose');
+const logger        = require('morgan');
+const path          = require('path');
 
-const session      = require('express-session');
-const MongoStore   = require('connect-mongo')(session);
-const flash        = require("connect-flash");
-const passport     = require("passport");
-const LocalStrategy= require("passport-local").Strategy;
-const User         = require('./models/user');
-const bcrypt       = require('bcryptjs');
+const session       = require('express-session');
+const MongoStore    = require('connect-mongo')(session);
+const flash         = require("connect-flash");
+const passport      = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
+const User          = require('./models/user');
+const bcrypt        = require('bcryptjs');
 
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
 mongoose
   .connect('mongodb://localhost/movie-celebrity-passport', {useNewUrlParser: true})
@@ -123,7 +124,48 @@ passport.use(new LocalStrategy((username, password, next) => {
 
 
 
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: process.env.GOOGLE_ID,
+      clientSecret: process.env.GOOGLE_SECRET,
+      callbackURL: "/users/google/callback"
+    },
+    (accessToken, refreshToken, profile, done) => {
+      // to see the structure of the data in received response:
+      console.log("Google account details:", profile);
 
+      User.findOne({ googleID: profile.id })
+        .then(user => {
+          if (user) {
+            done(null, user);
+            return;
+          }
+
+          let theImage = "";
+
+          if(profile.photos){
+            theImage = profile.photos[0].value;
+          }
+
+       
+
+          User.create({
+             googleID: profile.id ,
+             isAdmin: false,
+             image: theImage,
+             username: profile._json.name
+             
+            })
+            .then(newUser => {
+              done(null, newUser);
+            })
+            .catch(err => done(err)); // closes User.create()
+        })
+        .catch(err => done(err)); // closes User.findOne()
+    }
+  )
+);
 
 
 
