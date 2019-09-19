@@ -26,7 +26,7 @@ router.get('/', (req, res, next) => {
 
       allTheMovies.forEach((eachMovie) => {
         if(req.user){
-          if (eachMovie.creator.equals(req.user._id) || req.body.isAdmin) {
+          if (eachMovie.creator.equals(req.user._id) || req.user.isAdmin) {
             eachMovie.mine = true;
           }
         }

@@ -17,11 +17,12 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="collapse navbar-collapse nav" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        
+
         <li class="nav-item">
           <a class="nav-link" href="/">Home</a>
         </li>
-        
+
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
@@ -32,7 +33,7 @@
             <a class="dropdown-item" href="/movies/new">Create new movie</a>
           </div>
         </li>
-        
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
@@ -43,7 +44,11 @@
             <a class="dropdown-item" href="/celebrities/new">Create new celebrity</a>
           </div>
         </li>
-        
+
+
+
+
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
@@ -63,19 +68,38 @@
             {{/if}}
           </div>
         </li>
+
+
+
+
+
+
+
+        {{#if theUser.isAdmin}}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Admin
+          </a>
+          <div class="dropdown-menu user-div" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/admin/create-new-account">Create New User</a>
+            <a class="dropdown-item" href="/admin/active-users">Active Users</a>
+          </div>
+        </li>
+        {{/if}}
       </ul>
 
     </div>
   </nav>
 
-   {{#if successMessage}}
-    <div>{{successMessage}}</div>
-    {{/if}}
+  {{#if successMessage}}
+  <div>{{successMessage}}</div>
+  {{/if}}
 
 
-    {{#if errorMessage}}
-    <div>{{errorMessage}}</div>
-    {{/if}}
+  {{#if errorMessage}}
+  <div>{{errorMessage}}</div>
+  {{/if}}
 
   {{{body}}}
 

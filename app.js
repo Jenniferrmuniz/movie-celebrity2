@@ -160,7 +160,7 @@ const user = require('./routes/users');
 app.use('/users', user);
 
 const adminUser = require('./routes/admin-routes');
-app.use('/', adminUser);
+app.use('/admin', adminUser);
 
 
 

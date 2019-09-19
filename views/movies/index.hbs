@@ -4,40 +4,33 @@
 <div class='all-movies'>
 
 
-{{#each allMovies}}
+  {{#each allMovies}}
 
 
-<div class='movies-div'>
+  <div class='movies-div'>
 
-<a class='title-link' href='/movies/{{this._id}}'>
-<p>{{this.title}}</p>
-</a>
-
-
-{{!-- <a class='edit-link' href='/movies/{{this._id}}/edit'>Edit</a>
-
-<form class='delete-btn' action='/movies/{{this._id}}/delete' method='POST'>
-  <button type='submit'>Delete</button>
-</form> --}}
+    <a class='title-link' href='/movies/{{this._id}}'>
+      <p>{{this.title}}</p>
+    </a>
 
 
-{{#if this.mine}}
+    {{#if this.mine}}
 
-<form action="/movies/{{this._id}}/delete" method="POST">
-    <button type='submit'>Delete</button>
-</form>
+    <form action="/movies/{{this._id}}/delete" method="POST">
+      <button type='submit'>Delete</button>
+    </form>
 
 
-<a href="/movies/{{this._id}}/edit">Edit</a>
+    <a href="/movies/{{this._id}}/edit">Edit</a>
 
-{{/if}}
+    {{/if}}
 
 
 
-</div>
+  </div>
 
 
-{{/each}}
+  {{/each}}
 
 
 
