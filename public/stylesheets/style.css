@@ -128,4 +128,21 @@ body {
   border-radius: 5px;
   text-decoration: none; }
 
+.new-celeb-page {
+  margin: 30px; }
+
+.new-celeb-form {
+  margin: 100px;
+  display: flex;
+  flex-direction: column;
+  background-color: lightgreen; }
+
+.new-celeb-form div {
+  margin: 20px;
+  display: flex;
+  flex-direction: row; }
+
+.new-celeb-form p {
+  margin: 15px; }
+
 /*# sourceMappingURL=style.css.map */
