@@ -15,6 +15,16 @@ router.get('/signup', (req, res, next) => {
 
 router.post('/signup', (req, res, next) => {
 
+    let admin = false;
+
+    //check if logged in user is an admin
+    if(req.user){
+        if(req.user.isAdmin){
+            admin = req.body.role? req.body.role : false
+            //if req.body.role is true then it is equal to admin, otherwise admin is false
+        }
+    }
+
     const username = req.body.theUsername;
     const password = req.body.thePassword;
     const salt = bcrypt.genSaltSync(10);
@@ -22,7 +32,8 @@ router.post('/signup', (req, res, next) => {
 
     const newUser = {
         username: username,
-        password: hashPassword
+        password: hashPassword,
+        isAdmin: admin
     }
 
     User.create(newUser)
@@ -131,6 +142,52 @@ router.get('/secret', (req, res, next)=>{
 //     }
 
 // })
+
+
+router.get('/profile', (req, res, next)=>{
+    res.render('users/profile');
+})
+
+router.post('/account/delete-my-account', (req, res, next)=>{
+
+    User.findByIdAndRemove(req.user._id)
+    .then(()=>{
+        res.redirect('/')
+    })
+    .catch((err)=>{
+        next(err)
+    })
+
+})
+
+
+
+
+
+
+
+
+
+// router.get('/create-new-account', (req, res, next) =>{
+//     if(!req.user){
+//         req.flash('error, you must login to see this page');
+//         req.redirect('/login');
+//     }
+
+//     if(!req.user.isAdmin){
+//         req.flasj('error', 'you do not have access to this feature')
+//         req.redirect('/')
+//     }
+
+//     res.render('users/new-account');
+// })
+
+
+
+
+
+
+
 
 
 module.exports = router;

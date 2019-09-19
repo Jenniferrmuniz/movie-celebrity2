@@ -133,6 +133,7 @@ passport.use(new LocalStrategy((username, password, next) => {
 app.use((req, res, next)=>{
   res.locals.theUser = req.user;
   res.locals.errorMessage = req.flash('error');
+  res.locals.successMessage = req.flash('success');
   next();
 })
 // creating a universal variable inside all the hbs files called theUser
@@ -157,6 +158,9 @@ app.use('/movies', movie);
 
 const user = require('./routes/users');
 app.use('/users', user);
+
+const adminUser = require('./routes/admin-routes');
+app.use('/', adminUser);
 
 
 

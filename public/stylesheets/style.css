@@ -10,6 +10,20 @@ body {
   justify-content: space-around;
   color: black; }
 
+.login-page {
+  margin: 50px;
+  display: flex; }
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  margin: 50px; }
+
+.login-form div {
+  display: flex;
+  flex-direction: row;
+  margin: 20px; }
+
 #logout-btn button {
   background: none !important;
   border: none;

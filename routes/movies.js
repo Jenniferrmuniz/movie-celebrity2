@@ -26,13 +26,12 @@ router.get('/', (req, res, next) => {
 
       allTheMovies.forEach((eachMovie) => {
         if(req.user){
-          if (eachMovie.creator.equals(req.user._id)) {
+          if (eachMovie.creator.equals(req.user._id) || req.body.isAdmin) {
             eachMovie.mine = true;
           }
         }
 
       })
-
 
       res.render('movies/index', { allMovies: allTheMovies })
 
@@ -182,7 +181,7 @@ router.post('/:id', (req, res, next) => {
 
   Movie.findByIdAndUpdate(id, updateMovie)
     .then((data) => {
-      res.redirect('/movies')
+      res.redirect('/movies/'+id)
     })
     .catch((err) => {
       next(err);
