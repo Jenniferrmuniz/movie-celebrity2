@@ -11,15 +11,16 @@
     <a href='/celebrities/{{this._id}}'>
       <p>{{this.name}}</p>
     </a>
-    <a href='/celebrities/{{this._id}}/edit'>Edit</a>
 
-    {{!-- <form action='/celebrities/{{this._id}}/edit' method='GET'>
-      <button>Edit</button>
-    </form> --}}
+
+    {{#if ../theUser.isAdmin}}
+    <a href='/celebrities/{{this._id}}/edit'>Edit</a>
 
     <form action='/celebrities/{{this._id}}/delete' method='POST'>
       <button>Delete</button>
     </form>
+
+    {{/if}}
   </div>
 
   {{/each}}

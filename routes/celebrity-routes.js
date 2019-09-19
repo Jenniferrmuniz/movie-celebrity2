@@ -7,7 +7,7 @@ const Celeb = require('../models/celebrity');
 router.get('/', (req, res, next) => {
   Celeb.find()
   .then((allCelebs) => {
-    res.render('celebrities/index', {allCelebs: allCelebs});
+    res.render('celebrities/allCelebs', {allCelebs: allCelebs});
   })
   .catch((err) =>{
     next(err);
@@ -17,7 +17,7 @@ router.get('/', (req, res, next) => {
 
 
 router.get('/new', (req, res, next) => {
-  res.render('celebrities/new')
+  res.render('celebrities/newCeleb')
 })
 
 
@@ -34,7 +34,7 @@ router.post('/new', (req, res, next) => {
     res.redirect('/celebrities')
   })
   .catch((err)=>{
-    res.render('celebrities/new');
+    res.render('celebrities/newCeleb');
   })
 })
 
@@ -49,7 +49,7 @@ router.get('/:id', (req, res, next) => {
   
   Celeb.findById(id)
   .then((data) =>{
-    res.render('celebrities/show', {celebDetails: data})
+    res.render('celebrities/details', {celebDetails: data})
   })
   .catch((err)=>{
     next(err);
@@ -96,7 +96,7 @@ router.get('/:id/edit', (req, res, next) => {
 
   Celeb.findById(id)
   .then((result) =>{
-    res.render('celebrities/edit', result);
+    res.render('celebrities/editCeleb', result);
   })
   .catch((err) =>{
     next(err);

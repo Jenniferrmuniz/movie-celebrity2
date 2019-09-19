@@ -144,19 +144,19 @@ app.use((req, res, next)=>{
 
 
 
-const index = require('./routes/index');
+const index = require('./routes/index-route');
 app.use('/', index);
 
 
-const celebrity = require('./routes/celebrities');
+const celebrity = require('./routes/celebrity-routes');
 app.use('/celebrities', celebrity);
 
 
-const movie = require('./routes/movies');
+const movie = require('./routes/movie-routes');
 app.use('/movies', movie);
 
 
-const user = require('./routes/users');
+const user = require('./routes/user-routes');
 app.use('/users', user);
 
 const adminUser = require('./routes/admin-routes');

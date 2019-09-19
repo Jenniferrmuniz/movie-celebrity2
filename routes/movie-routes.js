@@ -33,7 +33,7 @@ router.get('/', (req, res, next) => {
 
       })
 
-      res.render('movies/index', { allMovies: allTheMovies })
+      res.render('movies/allMovies', { allMovies: allTheMovies })
 
     })
     .catch((err) => {

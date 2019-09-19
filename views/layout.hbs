@@ -49,6 +49,22 @@
 
 
 
+        {{#if theUser.isAdmin}}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Admin
+          </a>
+          <div class="dropdown-menu user-div" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/admin/create-new-account">Create New User</a>
+            <a class="dropdown-item" href="/admin/active-users">Active Users</a>
+          </div>
+        </li>
+        {{/if}}
+
+
+
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
@@ -56,6 +72,7 @@
           </a>
           <div class="dropdown-menu user-div" aria-labelledby="navbarDropdown">
             {{#if theUser}}
+            <a class='dropdown-item' href="/users/profile">Profile</a>
             <a class='dropdown-item' href="/users/secret">Secret Page</a>
             <a class='dropdown-item'>
               <form id='logout-btn' action="/users/logout" method="POST">
@@ -71,22 +88,6 @@
 
 
 
-
-
-
-
-        {{#if theUser.isAdmin}}
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Admin
-          </a>
-          <div class="dropdown-menu user-div" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/admin/create-new-account">Create New User</a>
-            <a class="dropdown-item" href="/admin/active-users">Active Users</a>
-          </div>
-        </li>
-        {{/if}}
       </ul>
 
     </div>
